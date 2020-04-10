@@ -99,7 +99,7 @@ const covid19ImpactEstimator = (data) => {
   const populationIncome = incomePopulation * totalPopulation;
 
 
-  const dollarsInFlightImpact = ibrtImpact * populationIncome * dailyIncome * periodFactorTrunc;
+  const dollarsInFlightImpact = ibrtImpact * dailyIncome * periodFactorTrunc;
 
 
   // const roundUpImpact = dollarsInFlightImpact.toFixed(2);
@@ -115,7 +115,7 @@ const covid19ImpactEstimator = (data) => {
   const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
 
-  const dollarsInFlightSevere = ibrtSevere * populationIncome * dailyIncome * periodFactorTrunc;
+  const dollarsInFlightSevere = ibrtSevere * populationIncome * periodFactorTrunc;
   // const roundUpSevere = dollarsInFlightSevere.toFixed(2);
 
 
