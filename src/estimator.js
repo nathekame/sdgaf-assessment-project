@@ -15,7 +15,8 @@ const covid19ImpactEstimator = (data) => {
   /* first challenge */
 
   const {
-    //  region,
+
+    // region,
     periodType,
     timeToElapse,
     reportedCases,
@@ -82,6 +83,23 @@ const covid19ImpactEstimator = (data) => {
   dataToBeReturned.severeImpact.hospitalBedsByRequestedTime = Math.trunc(hospitalBedByReqTimeS);
 
   /* end of second challeg */
+
+  /* Third challenge */
+
+  // impact
+  const casesForICUByReqTimeImpact = (impact.infectionsByRequestedTime / 100) * 5;
+  const casesForVentByReqTimeI = (impact.infectionsByRequestedTime / 100) * 2;
+
+  dataToBeReturned.impact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeImpact);
+  dataToBeReturned.impact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVentByReqTimeI);
+
+  // severe impact
+
+  const casesForICUByReqTimeSevere = (severeImpact.infectionsByRequestedTime / 100) * 5;
+  const casesForVBRTS = (severeImpact.infectionsByRequestedTime / 100) * 2;
+
+  dataToBeReturned.severeImpact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeSevere);
+  dataToBeReturned.severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVBRTS);
 
   return dataToBeReturned;
 };
