@@ -24,7 +24,6 @@ const covid19ImpactEstimator = (data) => {
 
   const x = 2 ** periodFactorTrunc;
 
-
   const currentlyInfectedImpact = reportedCases * 10;
   const infectionsByRequestedTimeImpact = currentlyInfectedImpact * x;
 
