@@ -20,7 +20,7 @@ const covid19ImpactEstimator = (data) => {
     periodType,
     timeToElapse,
     reportedCases,
-    population,
+    // population,
     totalHospitalBeds
 
   } = data;
@@ -93,13 +93,13 @@ const covid19ImpactEstimator = (data) => {
 
   const ibrtImpact = impact.infectionsByRequestedTime;
   const dailyIncome = region.avgDailyIncomeInUSD;
-  const incomePopulation = region.avgDailyIncomePopulation;
-  const totalPopulation = population;
+  // const incomePopulation = region.avgDailyIncomePopulation;
+  // const totalPopulation = population;
 
-  const populationIncome = incomePopulation * totalPopulation;
+  // const populationIncome = incomePopulation * totalPopulation;
 
 
-  const dollarsInFlightImpact = ibrtImpact * populationIncome * dailyIncome * periodFactorTrunc;
+  const dollarsInFlightImpact = ibrtImpact * dailyIncome * periodFactorTrunc;
 
 
   const roundUpImpact = dollarsInFlightImpact.toFixed(2);
@@ -115,7 +115,7 @@ const covid19ImpactEstimator = (data) => {
   const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
 
-  const dollarsInFlightSevere = ibrtSevere * populationIncome * dailyIncome * periodFactorTrunc;
+  const dollarsInFlightSevere = ibrtSevere * dailyIncome * periodFactorTrunc;
   const roundUpSevere = dollarsInFlightSevere.toFixed(2);
 
 
