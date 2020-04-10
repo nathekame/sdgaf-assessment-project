@@ -1,5 +1,15 @@
-import periodUtility from './periodUtility';
-
+const periodUtility = (periodType, periodCount) => {
+  if (periodType === 'days') {
+    return periodCount;
+  }
+  if (periodType === 'weeks') {
+    return periodCount * 7;
+  }
+  if (periodType === 'months') {
+    return periodCount * 30;
+  }
+  return periodCount;
+};
 
 const covid19ImpactEstimator = (data) => {
 // task 1
