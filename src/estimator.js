@@ -99,14 +99,14 @@ const covid19ImpactEstimator = (data) => {
   const populationIncome = incomePopulation * totalPopulation;
 
 
-  const dollarsInFlightImpact = ibrtImpact * dailyIncome * periodFactorTrunc;
+  const dollarsInFlightImpact = ibrtImpact * populationIncome * dailyIncome * periodFactorTrunc;
 
 
-  // const roundUpImpact = dollarsInFlightImpact.toFixed(2);
+  const roundUpImpact = dollarsInFlightImpact.toFixed(2);
 
   dataToBeReturned.impact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeImpact);
   dataToBeReturned.impact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVentByReqTimeI);
-  dataToBeReturned.impact.dollarsInFlight = dollarsInFlightImpact;
+  dataToBeReturned.impact.dollarsInFlight = roundUpImpact;
 
   // severe impact
 
@@ -115,16 +115,15 @@ const covid19ImpactEstimator = (data) => {
   const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
 
-  const dollarsInFlightSevere = ibrtSevere * populationIncome * periodFactorTrunc;
-  // const roundUpSevere = dollarsInFlightSevere.toFixed(2);
+  const dollarsInFlightSevere = ibrtSevere * populationIncome * dailyIncome * periodFactorTrunc;
+  const roundUpSevere = dollarsInFlightSevere.toFixed(2);
 
 
   dataToBeReturned.severeImpact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeSevere);
   dataToBeReturned.severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVBRTS);
-  dataToBeReturned.severeImpact.dollarsInFlight = dollarsInFlightSevere;
+  dataToBeReturned.severeImpact.dollarsInFlight = roundUpSevere;
 
   return dataToBeReturned;
 };
-
 
 export default covid19ImpactEstimator;
