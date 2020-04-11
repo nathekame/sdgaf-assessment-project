@@ -98,11 +98,11 @@ const covid19ImpactEstimator = (data) => {
 
   const populationIncome = incomePopulation * totalPopulation;
 
+  const y = ibrtImpact * populationIncome * dailyIncome;
+  const dollarsInFlightImpact = y / periodFactorTrunc;
 
-  const dollarsInFlightImpact = ibrtImpact * populationIncome * dailyIncome * periodFactorTrunc;
 
-
-  const roundUpImpact = dollarsInFlightImpact.toFixed(2);
+  const roundUpImpact = Math.trunc(dollarsInFlightImpact);
 
   dataToBeReturned.impact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeImpact);
   dataToBeReturned.impact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVentByReqTimeI);
@@ -114,9 +114,9 @@ const covid19ImpactEstimator = (data) => {
   const casesForVBRTS = (severeImpact.infectionsByRequestedTime / 100) * 2;
   const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
-
-  const dollarsInFlightSevere = ibrtSevere * populationIncome * dailyIncome * periodFactorTrunc;
-  const roundUpSevere = dollarsInFlightSevere.toFixed(2);
+  const z = ibrtSevere * populationIncome * dailyIncome;
+  const dollarsInFlightSevere = z / periodFactorTrunc;
+  const roundUpSevere = Math.trunc(dollarsInFlightSevere);
 
 
   dataToBeReturned.severeImpact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeSevere);
