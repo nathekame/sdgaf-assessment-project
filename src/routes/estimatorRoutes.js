@@ -10,7 +10,7 @@ const estimatorPost = async (req, res) => {
   const reqFormat = req.params.format;
 
   if (reqFormat === 'json') {
-    res.set('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json');
     res.send(dataToBeReturned);
   } else if (reqFormat === 'xml') {
     res.set('Content-Type', 'application/xml');
@@ -22,14 +22,14 @@ const estimatorPost = async (req, res) => {
 const estimatorPostJSON = async (req, res) => {
   const dataToBeReturned = estimator(req.body);
 
-  res.set('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'application/json');
   res.send(dataToBeReturned);
 };
 
 const estimatorPostXML = async (req, res) => {
   const dataToBeReturned = estimator(req.body);
 
-  res.set('Content-Type', 'application/xml');
+  res.setHeader('Content-Type', 'application/xml');
   res.xml(dataToBeReturned);
 };
 
@@ -41,6 +41,7 @@ const estimatorGetLogs = async (req, res) => {
     }
     if (stats.isFile) {
       const readStream = fs.createReadStream('./covid19estimator.log');
+      res.setHeader('Content-Type', 'text/plain');
       readStream.pipe(res);
       readStream.on('error', () => {
         res.sendStatus(500);
