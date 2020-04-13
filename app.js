@@ -17,11 +17,11 @@ const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.lo
 
 
 const checkResTime = (data) => {
-  const d = data;
+  const d = data * 10;
   // console.log("the old and new "+data + " "+ d);
   const a = Math.trunc(d);
   if (a < 10) {
-    const x = `0${a}`;
+    const x = `${a}`;
     return x;
   }
   return a;
@@ -32,8 +32,8 @@ const dMorgan = morgan((tokens, req, res) => {
     tokens.method(req, res),
     tokens.url(req, res),
     tokens.status(req, res),
-    checkResTime(tokens['response-time'](req, res) * 10), 'ms'
-  ].join('\t\t');
+    checkResTime(tokens['response-time'](req, res)), 'ms'
+  ].join('  ');
 }, { stream: logStream });
 
 // app.use(morgan(':method  :url  :status  :response-time[0] ms', { stream: logStream }));
