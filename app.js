@@ -7,7 +7,6 @@
 // import path from 'path';
 // import routes from './src/routes/api';
 
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const xmlMiddleware = require('xml-express-middleware').xml;
