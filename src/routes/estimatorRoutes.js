@@ -15,6 +15,9 @@ const estimatorPost = async (req, res) => {
   } else if (reqFormat === 'xml') {
     res.set('Content-Type', 'application/xml');
     res.xml(dataToBeReturned);
+  } else {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(dataToBeReturned);
   }
 };
 
