@@ -33,7 +33,7 @@ const dMorgan = morgan((tokens, req, res) => {
     tokens.url(req, res),
     tokens.status(req, res),
     checkResTime(tokens['response-time'](req, res) * 10), 'ms'
-  ].join(' ');
+  ].join('\t\t');
 }, { stream: logStream });
 
 // app.use(morgan(':method  :url  :status  :response-time[0] ms', { stream: logStream }));
