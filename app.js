@@ -1,12 +1,4 @@
 
-// import express from 'express';
-// import bodyParser from 'body-parser';
-// // import xmlMiddleware from 'xml-express-middleware';
-// import fs from 'fs';
-// import morgan from 'morgan';
-// import path from 'path';
-// import routes from './src/routes/api';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const xmlMiddleware = require('xml-express-middleware').xml;

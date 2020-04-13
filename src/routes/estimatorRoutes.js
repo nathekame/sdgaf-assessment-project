@@ -1,5 +1,3 @@
-// import fs from 'fs';
-// import covid19ImpactEstimator from '../estimator';
 
 const fs = require('fs');
 
@@ -8,12 +6,14 @@ const estimator = require('./estimator');
 
 const estimatorPostJSON = async (req, res) => {
   const dataToBeReturned = estimator(req.body);
+
   res.set('Content-Type', 'application/json');
   res.send(dataToBeReturned);
 };
 
 const estimatorPostXML = async (req, res) => {
   const dataToBeReturned = estimator(req.body);
+
   res.set('Content-Type', 'application/xml');
   res.xml(dataToBeReturned);
 };
