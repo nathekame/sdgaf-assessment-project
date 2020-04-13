@@ -18,11 +18,15 @@ const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.lo
 
 const checkResTime = (data) => {
   const d = data * 10;
-  // console.log("the old and new "+data + " "+ d);
   const a = Math.trunc(d);
   if (a < 10) {
-    const x = `${a}`;
+    const x = `0${a}`;
     return x;
+  }
+  if (a > 99) {
+    const x = a / 10;
+    const y = Math.trunc(x);
+    return y;
   }
   return a;
 };
