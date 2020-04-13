@@ -16,7 +16,30 @@ const PORT = process.env.PORT || 6000;
 const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.log'));
 
 
-app.use(morgan(':method  :url  :status  :response-time[0] ms', { stream: logStream }));
+const checkResTime = (data) => {
+  const d = data;
+  if (d < 10) {
+    // console.log("it is less than 10 ooo "+d);
+    const y = Math.trunc(d);
+    const x = `0${y}`;
+    return x;
+  }
+  return d;
+};
+
+const dMorgan = morgan((tokens, req, res) => {
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    checkResTime(tokens['response-time'](req, res)), 'ms'
+  ].join(' ');
+}, { stream: logStream });
+
+// app.use(morgan(':method  :url  :status  :response-time[0] ms', { stream: logStream }));
+
+app.use(dMorgan);
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
