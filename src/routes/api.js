@@ -10,6 +10,8 @@ router.get('/', (req, res) => {
   res.send('WELCOME TO SDGAF ESTIMATOR API');
 });
 
+router.post('/api/v1/on-covid-19/:format', estimatorRoute.estimatorPost);
+
 router.post('/api/v1/on-covid-19/json', estimatorRoute.estimatorPostJSON);
 
 router.post('/api/v1/on-covid-19/xml', estimatorRoute.estimatorPostXML);

@@ -4,6 +4,21 @@ const fs = require('fs');
 const estimator = require('./estimator');
 // const covid19ImpactEstimator = require('../estimator');
 
+
+const estimatorPost = async (req, res) => {
+  const dataToBeReturned = estimator(req.body);
+  const reqFormat = req.params.format;
+
+  if (reqFormat === 'json') {
+    res.set('Content-Type', 'application/json');
+    res.send(dataToBeReturned);
+  } else if (reqFormat === 'xml') {
+    res.set('Content-Type', 'application/xml');
+    res.xml(dataToBeReturned);
+  }
+};
+
+
 const estimatorPostJSON = async (req, res) => {
   const dataToBeReturned = estimator(req.body);
 
@@ -40,6 +55,7 @@ const estimatorGetLogs = async (req, res) => {
 };
 
 module.exports = {
+  estimatorPost,
   estimatorPostJSON,
   estimatorPostXML,
   estimatorGetLogs
