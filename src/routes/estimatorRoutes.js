@@ -6,7 +6,7 @@ const estimator = require('./estimator');
 
 
 const estimatorPost = async (req, res) => {
-  const dataToBeReturned = estimator(req.body);
+  const dataToBeReturned = await estimator(req.body);
   const reqFormat = req.params.format;
 
   if (reqFormat === 'json') {
