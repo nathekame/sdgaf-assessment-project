@@ -13,7 +13,7 @@ const app = express();
 
 const PORT = process.env.PORT || 6000;
 
-const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.log'));
+const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.log'), { flags: 'a' });
 
 
 const checkResTime = (data) => {
