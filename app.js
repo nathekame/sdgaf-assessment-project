@@ -5,7 +5,9 @@ const xmlMiddleware = require('xml-express-middleware').xml;
 const fs = require('fs');
 const morgan = require('morgan');
 const path = require('path');
+// const _ = require('lodash');
 const routes = require('./src/routes/api');
+
 
 const app = express();
 
@@ -13,7 +15,8 @@ const PORT = process.env.PORT || 6000;
 
 const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.log'));
 
-app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms\n', { stream: logStream }));
+
+app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time[0] ms', { stream: logStream }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
