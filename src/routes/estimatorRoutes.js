@@ -44,7 +44,8 @@ const estimatorGetLogs = async (req, res) => {
     }
     if (stats.isFile) {
       const readStream = fs.createReadStream('./covid19estimator.log');
-      res.setHeader('Content-Type', 'text/plain');
+      // res.setHeader('Content-Type', 'text/plain');
+      res.type('text/plain');
       readStream.pipe(res);
       readStream.on('error', () => {
         res.sendStatus(500);
