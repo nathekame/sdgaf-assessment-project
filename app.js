@@ -16,7 +16,15 @@ const logStream = fs.createWriteStream(path.join(__dirname, 'covid19estimator.lo
 app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time ms\n', { stream: logStream }));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(xmlMiddleware());
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
+  next();
+});
 
 app.use('/api/v1/on-covid-19', routes);
 
