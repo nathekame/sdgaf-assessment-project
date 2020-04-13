@@ -11,13 +11,13 @@ const estimatorPost = async (req, res) => {
 
   if (reqFormat === 'json') {
     res.setHeader('Content-Type', 'application/json');
-    res.send(dataToBeReturned);
+    res.json(dataToBeReturned);
   } else if (reqFormat === 'xml') {
     res.set('Content-Type', 'application/xml');
     res.xml(dataToBeReturned);
   } else {
     res.setHeader('Content-Type', 'application/json');
-    res.send(dataToBeReturned);
+    res.json(dataToBeReturned);
   }
 };
 
@@ -26,7 +26,7 @@ const estimatorPostJSON = async (req, res) => {
   const dataToBeReturned = estimator(req.body);
 
   res.setHeader('Content-Type', 'application/json');
-  res.send(dataToBeReturned);
+  res.json(dataToBeReturned);
 };
 
 const estimatorPostXML = async (req, res) => {

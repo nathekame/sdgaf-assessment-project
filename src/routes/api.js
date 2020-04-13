@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
 
 router.post('/:format?', estimatorRoute.estimatorPost);
 
-router.post('/json', estimatorRoute.estimatorPostJSON);
+// router.post('/json', estimatorRoute.estimatorPostJSON);
 
-router.post('/xml', estimatorRoute.estimatorPostXML);
+// router.post('/xml', estimatorRoute.estimatorPostXML);
 
 router.get('/logs', estimatorRoute.estimatorGetLogs);
 
