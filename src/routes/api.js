@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   res.send('WELCOME TO SDGAF ESTIMATOR API');
 });
 
-router.post('/:format', estimatorRoute.estimatorPost);
+router.post('/:format?', estimatorRoute.estimatorPost);
 
 router.post('/json', estimatorRoute.estimatorPostJSON);
 
