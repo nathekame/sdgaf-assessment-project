@@ -15,14 +15,11 @@ const covid19ImpactEstimator = (data) => {
   /* first challenge */
 
   const {
-
     region,
     periodType,
     timeToElapse,
     reportedCases,
-    // population,
     totalHospitalBeds
-
   } = data;
 
 
@@ -91,12 +88,8 @@ const covid19ImpactEstimator = (data) => {
   const casesForICUByReqTimeImpact = (impact.infectionsByRequestedTime / 100) * 5;
   const casesForVentByReqTimeI = (impact.infectionsByRequestedTime / 100) * 2;
 
-  // const ibrtImpact = impact.infectionsByRequestedTime;
   const dailyIncome = region.avgDailyIncomeInUSD;
   const incomePopulation = region.avgDailyIncomePopulation;
-  // const totalPopulation = population;
-
-  // const populationIncome = incomePopulation * totalPopulation;
 
   // * populationIncome
   const hospitalizedImpact = impact.infectionsByRequestedTime;
@@ -114,7 +107,6 @@ const covid19ImpactEstimator = (data) => {
 
   const casesForICUByReqTimeSevere = (severeImpact.infectionsByRequestedTime / 100) * 5;
   const casesForVBRTS = (severeImpact.infectionsByRequestedTime / 100) * 2;
-  // const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
   // * populationIncome
   const hospitalizedSevere = severeImpact.infectionsByRequestedTime;

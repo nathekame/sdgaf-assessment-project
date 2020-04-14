@@ -1,8 +1,5 @@
-
 const fs = require('fs');
-
 const estimator = require('./estimator');
-// const covid19ImpactEstimator = require('../estimator');
 
 
 const estimatorPost = async (req, res) => {
@@ -22,21 +19,6 @@ const estimatorPost = async (req, res) => {
 };
 
 
-const estimatorPostJSON = async (req, res) => {
-  const dataToBeReturned = estimator(req.body);
-
-  res.setHeader('Content-Type', 'application/json');
-  res.json(dataToBeReturned);
-};
-
-const estimatorPostXML = async (req, res) => {
-  const dataToBeReturned = estimator(req.body);
-
-  res.setHeader('Content-Type', 'application/xml');
-  res.xml(dataToBeReturned);
-};
-
-
 const estimatorGetLogs = async (req, res) => {
   fs.stat('./covid19estimator.log', (err, stats) => {
     if (err) {
@@ -44,7 +26,6 @@ const estimatorGetLogs = async (req, res) => {
     }
     if (stats.isFile) {
       const readStream = fs.createReadStream('./covid19estimator.log');
-      // res.setHeader('Content-Type', 'text/plain');
       res.type('text/plain');
       readStream.pipe(res);
       readStream.on('error', () => {
@@ -61,7 +42,5 @@ const estimatorGetLogs = async (req, res) => {
 
 module.exports = {
   estimatorPost,
-  estimatorPostJSON,
-  estimatorPostXML,
   estimatorGetLogs
 };

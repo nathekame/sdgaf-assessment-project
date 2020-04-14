@@ -34,6 +34,7 @@ const checkResTime = (data) => {
 
 const dMorgan = morgan((tokens, req, res) => {
   return [
+    test,
     tokens.method(req, res),
     tokens.url(req, res),
     tokens.status(req, res),
@@ -41,7 +42,6 @@ const dMorgan = morgan((tokens, req, res) => {
   ].join('  ');
 }, { stream: logStream });
 
-// app.use(morgan(':method  :url  :status  :response-time[0] ms', { stream: logStream }));
 
 app.use(dMorgan);
 
