@@ -104,7 +104,6 @@ const covid19ImpactEstimator = (data) => {
   dataToBeReturned.impact.dollarsInFlight = roundUpImpact;
 
   // severe impact
-
   const casesForICUByReqTimeSevere = (severeImpact.infectionsByRequestedTime / 100) * 5;
   const casesForVBRTS = (severeImpact.infectionsByRequestedTime / 100) * 2;
 
@@ -122,4 +121,5 @@ const covid19ImpactEstimator = (data) => {
   return dataToBeReturned;
 };
 
-export default covid19ImpactEstimator;
+
+module.exports = covid19ImpactEstimator;
